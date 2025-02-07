@@ -1,12 +1,45 @@
 const container = document.querySelector("div.container");
+const btn = document.querySelector("button");
+const gridWidth = 400;
+const gridHeight = 400;
+const cells = [];
 
-for (let i = 0; i < 16 * 16; ++i) {
+function createCell(width, height) {
     const cell = document.createElement("div");
     cell.classList.add("cell");
-    container.appendChild(cell);
+
+    cell.style.width = `${width}%`;
+    cell.style.height = `${height}%`;
+    return cell;
 }
 
+function createGrid(cellsPerSide) {
+    const cells = [];
+    for (let i = 0; i < cellsPerSide * cellsPerSide; ++i) {
+        cells.push(createCell(100/cellsPerSide, 100/cellsPerSide));
+    }
+    return cells;
+}
+
+cells.push(...createGrid(16));
+cells.forEach((cell) => container.appendChild(cell));
+
 container.addEventListener("mouseover", (event) => {
-    let cell = event.target;
+    const cell = event.target;
+    if (cell === container) return;
     cell.style.backgroundColor = "black";
+});
+
+btn.addEventListener("click", (event) => {
+    const numOfCells = parseInt(prompt("How many cells per side?"));
+    if (!Number.isInteger(numOfCells)) return;
+    if (!(1 <= numOfCells && numOfCells <= 100)) return;
+
+    for (let i = cells.length - 1; i >= 0; --i) {
+        container.removeChild(cells[i]);
+        cells.pop();
+    }
+    
+    cells.push(...createGrid(numOfCells));
+    cells.forEach((cell) => container.appendChild(cell));
 });
