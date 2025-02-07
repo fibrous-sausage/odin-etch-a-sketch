@@ -10,10 +10,10 @@ function chooseRandomColor() {
 
 function createCell(width, height) {
     const cell = document.createElement("div");
-    cell.classList.add("cell");
 
     cell.style.width = `${width}%`;
     cell.style.height = `${height}%`;
+    cell.style.opacity = "0.1";
     return cell;
 }
 
@@ -31,7 +31,11 @@ cells.forEach((cell) => container.appendChild(cell));
 container.addEventListener("mouseover", (event) => {
     const cell = event.target;
     if (cell === container) return;
-    cell.style.backgroundColor = chooseRandomColor();
+
+    if (cell.style.backgroundColor === "") {
+        cell.style.backgroundColor = chooseRandomColor();
+    }
+    cell.style.opacity = Math.min(parseFloat(cell.style.opacity) + 0.1, 1);
 });
 
 btn.addEventListener("click", (event) => {

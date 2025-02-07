@@ -29,15 +29,11 @@ button {
 .container {
     width: 50%;
     height: 50%;
-
+    border-style: solid;
+    border-color: black;
     flex: auto;
 
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-}
-
-.cell {
-    border-style: solid;
-    border-width: 1px;
 }
