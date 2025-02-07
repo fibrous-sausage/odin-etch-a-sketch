@@ -1,0 +1,38 @@
+/* box sizing fix*/
+html {
+    box-sizing: border-box;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+/* body should take up all the height available in the page */
+html, body {
+    height: 100%
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    max-width: 400px;
+    max-height: 400px;
+    flex: auto;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.cell {
+    width: 25px;
+    height: 25px;
+    border-style: solid;
+    border-width: 1px;
+}
