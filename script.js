@@ -1,8 +1,12 @@
 const container = document.querySelector("div.container");
 const btn = document.querySelector("button");
-const gridWidth = 400;
-const gridHeight = 400;
 const cells = [];
+
+const COLORS = ["red", "green", "blue"];
+
+function chooseRandomColor() {
+    return COLORS[Math.floor(Math.random() * COLORS.length)];
+}
 
 function createCell(width, height) {
     const cell = document.createElement("div");
@@ -27,7 +31,7 @@ cells.forEach((cell) => container.appendChild(cell));
 container.addEventListener("mouseover", (event) => {
     const cell = event.target;
     if (cell === container) return;
-    cell.style.backgroundColor = "black";
+    cell.style.backgroundColor = chooseRandomColor();
 });
 
 btn.addEventListener("click", (event) => {
