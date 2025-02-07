@@ -13,7 +13,7 @@ function createCell(width, height) {
 
     cell.style.width = `${width}%`;
     cell.style.height = `${height}%`;
-    cell.style.opacity = "0.1";
+    cell.style.opacity = "0.0";
     return cell;
 }
 
